@@ -10,3 +10,13 @@ GET http://{{host}}:{{port}}/engineer
 GET http://{{host}}:{{port}}/engineer/1
 
 ###
+# Create engineer
+PUT http://{{host}}:{{port}}/engineer
+Content-Type: application/json
+
+{
+  "FirstName": "Rob",
+  "LastName": "Pike"
+}
+
+###

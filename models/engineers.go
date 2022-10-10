@@ -7,7 +7,7 @@ import (
 )
 
 type Engineer struct {
-	ID        int
+	ID        int64
 	FirstName string
 	LastName  string
 }
@@ -25,8 +25,13 @@ func GetAllEngineers() []Engineer {
 	return engineers
 }
 
-func GetEngineerById(Id int) *Engineer {
+func GetEngineerById(Id int64) *Engineer {
 	var engineer Engineer
 	db.Where("ID = ?", Id).Find(&engineer)
 	return &engineer
+}
+
+func (e *Engineer) CreateEngineer() *Engineer {
+	db.Create(&e)
+	return e
 }
