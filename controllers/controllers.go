@@ -8,9 +8,15 @@ import (
 )
 
 func HomePage(w http.ResponseWriter, r *http.Request) {
-	models.Test()
+	res, _ := json.Marshal("Welcome to simple GoLang CRUD application")
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(res)
+}
 
-	res, _ := json.Marshal([]string{"Hello", "world"})
+func ReadAllEngineers(w http.ResponseWriter, r *http.Request) {
+	engineers := models.GetAllEngineers()
+	res, _ := json.Marshal(engineers)
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)

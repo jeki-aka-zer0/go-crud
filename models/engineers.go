@@ -19,7 +19,8 @@ func init() {
 	db = config.GetDB()
 }
 
-func Test() {
-	// Create
-	db.Create(&Engineer{FirstName: "John", LastName: "Doe"})
+func GetAllEngineers() []Engineer {
+	var Engineers []Engineer
+	db.Find(&Engineers)
+	return Engineers
 }
