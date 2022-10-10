@@ -1,0 +1,8 @@
+# Home page
+GET http://{{host}}:{{port}}
+
+###
+# Get all engineers
+GET http://{{host}}:{{port}}/engineer
+
+###
