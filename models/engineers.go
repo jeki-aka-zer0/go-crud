@@ -20,7 +20,13 @@ func init() {
 }
 
 func GetAllEngineers() []Engineer {
-	var Engineers []Engineer
-	db.Find(&Engineers)
-	return Engineers
+	var engineers []Engineer
+	db.Find(&engineers)
+	return engineers
+}
+
+func GetEngineerById(Id int) *Engineer {
+	var engineer Engineer
+	db.Where("ID = ?", Id).Find(&engineer)
+	return &engineer
 }

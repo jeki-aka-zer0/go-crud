@@ -6,3 +6,7 @@ GET http://{{host}}:{{port}}
 GET http://{{host}}:{{port}}/engineer
 
 ###
+# Get engineer by ID (Barbara Liskov)
+GET http://{{host}}:{{port}}/engineer/1
+
+###
