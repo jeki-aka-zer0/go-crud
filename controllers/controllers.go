@@ -49,3 +49,15 @@ func CreateEngineer(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 }
+
+func DeleteEngineer(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	id := vars["id"]
+	ID, err := strconv.ParseInt(id, 10, 64)
+	if err != nil {
+		fmt.Println("Id is required")
+	}
+	models.DeleteEngineer(ID)
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+}

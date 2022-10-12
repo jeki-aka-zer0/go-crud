@@ -25,13 +25,19 @@ func GetAllEngineers() []Engineer {
 	return engineers
 }
 
-func GetEngineerById(Id int64) *Engineer {
+func GetEngineerById(ID int64) *Engineer {
 	var engineer Engineer
-	db.Where("ID = ?", Id).Find(&engineer)
+	db.Where("ID = ?", ID).Find(&engineer)
 	return &engineer
 }
 
 func (e *Engineer) CreateEngineer() *Engineer {
 	db.Create(&e)
 	return e
+}
+
+func DeleteEngineer(ID int64) Engineer {
+	var engineer Engineer
+	db.Where("ID = ?", ID).Delete(engineer)
+	return engineer
 }

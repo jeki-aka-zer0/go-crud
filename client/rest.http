@@ -20,3 +20,8 @@ Content-Type: application/json
 }
 
 ###
+# Delete engineer
+DELETE http://{{host}}:{{port}}/engineer/6
+Content-Type: application/json
+
+###
