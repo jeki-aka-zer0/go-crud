@@ -11,7 +11,7 @@ GET http://{{host}}:{{port}}/engineer/1
 
 ###
 # Create engineer
-PUT http://{{host}}:{{port}}/engineer
+POST http://{{host}}:{{port}}/engineer
 Content-Type: application/json
 
 {
@@ -20,8 +20,16 @@ Content-Type: application/json
 }
 
 ###
+# Update engineer (Rob Pike)
+PUT http://{{host}}:{{port}}/engineer/6
+Content-Type: application/json
+
+{
+  "FirstName": "Robert",
+  "LastName": "Griesemer"
+}
+
+###
 # Delete engineer
 DELETE http://{{host}}:{{port}}/engineer/6
 Content-Type: application/json
-
-###

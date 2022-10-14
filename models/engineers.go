@@ -41,3 +41,17 @@ func DeleteEngineer(ID int64) Engineer {
 	db.Where("ID = ?", ID).Delete(engineer)
 	return engineer
 }
+
+func UpdateEngineer(ID int64, engineerData Engineer) *Engineer {
+	existentEngineer := GetEngineerById(ID)
+
+	if engineerData.FirstName != "" {
+		existentEngineer.FirstName = engineerData.FirstName
+	}
+	if engineerData.LastName != "" {
+		existentEngineer.LastName = engineerData.LastName
+	}
+
+	db.Save(&existentEngineer)
+	return existentEngineer
+}

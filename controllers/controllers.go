@@ -34,8 +34,8 @@ func GetEngineerById(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println("Id is required")
 	}
-	engineers := models.GetEngineerById(ID)
-	res, _ := json.Marshal(engineers)
+	engineer := models.GetEngineerById(ID)
+	res, _ := json.Marshal(engineer)
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
@@ -58,6 +58,20 @@ func DeleteEngineer(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("Id is required")
 	}
 	models.DeleteEngineer(ID)
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+}
+
+func UpdateEngineer(w http.ResponseWriter, r *http.Request) {
+	var engineerData = &models.Engineer{}
+	utils.ParseBody(r, engineerData)
+	vars := mux.Vars(r)
+	id := vars["id"]
+	ID, err := strconv.ParseInt(id, 10, 64)
+	if err != nil {
+		fmt.Println("Id is required")
+	}
+	models.UpdateEngineer(ID, *engineerData)
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 }

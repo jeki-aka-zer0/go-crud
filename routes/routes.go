@@ -10,6 +10,7 @@ var RegisterRoutes = func(router *mux.Router) {
 	router.HandleFunc("/", controllers.HomePage).Methods("GET")
 	router.HandleFunc("/engineer", controllers.ReadAllEngineers).Methods("GET")
 	router.HandleFunc("/engineer/{id}", controllers.GetEngineerById).Methods("GET")
-	router.HandleFunc("/engineer", controllers.CreateEngineer).Methods("PUT")
+	router.HandleFunc("/engineer", controllers.CreateEngineer).Methods("POST")
 	router.HandleFunc("/engineer/{id}", controllers.DeleteEngineer).Methods("DELETE")
+	router.HandleFunc("/engineer/{id}", controllers.UpdateEngineer).Methods("PUT")
 }
